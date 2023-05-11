@@ -60,6 +60,7 @@ pipeline "complex" {
   }
   step "other" {
     depends_on = ["prep"]
+    image_url = "busybox"
     use "exec" {
       command = "echo"
       args = ["other"]
@@ -67,6 +68,7 @@ pipeline "complex" {
   }
   step "done" {
     depends_on = ["reference-two-step", "other"]
+    image_url = "busybox"
     use "exec" {
       command = "echo"
       args = ["done"]
