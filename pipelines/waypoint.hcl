@@ -43,39 +43,6 @@ pipeline "three-step-referenced" {
   }
 }
 
-pipeline "complex" {
-  step "prep" {
-    image_url = "busybox"
-    use "exec" {
-      command = "echo"
-      args = ["preparing"]
-    }
-  }
-  step "reference-two-step" {
-    depends_on = ["prep"]
-    use "pipeline" {
-      project = "pipelines"
-      name = "two-step"
-    }
-  }
-  step "other" {
-    depends_on = ["prep"]
-    image_url = "busybox"
-    use "exec" {
-      command = "echo"
-      args = ["other"]
-    }
-  }
-  step "done" {
-    depends_on = ["reference-two-step", "other"]
-    image_url = "busybox"
-    use "exec" {
-      command = "echo"
-      args = ["done"]
-    }
-  }
-}
-
 pipeline "three-step-nested" {
   step "prep" {
     image_url = "busybox"
