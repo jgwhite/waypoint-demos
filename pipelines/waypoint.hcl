@@ -71,6 +71,18 @@ pipeline "three-step-nested" {
   }
 }
 
+pipeline "arriba" {
+  step "construir" {
+    use "build" {}
+  }
+  step "desplegar" {
+    use "deploy" {}
+  }
+  step "liberar" {
+    use "release" {}
+  }
+}
+
 runner {
   enabled = true
 
