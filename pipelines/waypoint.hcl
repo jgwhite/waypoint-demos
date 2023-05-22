@@ -87,6 +87,12 @@ app "web" {
   }
 
   deploy {
-    use "docker" {}
+    use "kubernetes" {
+      service_port = 80
+    }
+  }
+
+  release {
+    use "kubernetes" {}
   }
 }
