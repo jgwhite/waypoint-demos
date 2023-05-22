@@ -84,6 +84,12 @@ runner {
 app "web" {
   build {
     use "docker" {}
+    registry {
+      use "docker" {
+        image = "ttl.sh/jgwhite-pipelines"
+        tag   = "2h"
+      }
+    }
   }
 
   deploy {
