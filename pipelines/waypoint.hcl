@@ -10,6 +10,16 @@ pipeline "a" {
   }
 }
 
+pipeline "b" {
+  step "hi" {
+    image_url = "busybox"
+    use "exec" {
+      command = "echo"
+      args = ["hi"]
+    }
+  }
+}
+
 pipeline "one-step" {
   step "hi" {
     image_url = "busybox"
